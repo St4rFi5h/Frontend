@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Hello node.js</title>
+<script src = 'https://code.jquery.com/jquery-3.5.1.min.js'></script>
+
+    </head>
+    <body>
+        <h1>너어무 신나고오~</h1>
+        <button id= "load-data">서버에서 정보찾기</button>
+        <table border= "1">
+            <thead>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>데이터</th>
+                <th>시각</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id= "user-id"></td>
+                    <td id= "user-name"></td>
+                    <td id= "user-data"></td>
+                    <td id= "user-time"></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $(`#load-data`).on('click', e => {
+                $.get('/data',x =>{
+                    console.log(x)
+                   const a = document.getElementById('user-id')
+                   const b = document.getElementById('user-name')
+                   const c = document.getElementById('user-data')
+                   const d = document.getElementById('user-time')
+                   a.innerText = x.id
+                   b.innerText = x.name
+                   c.innerText = x.myData
+                   d.innerText = x.timestamp
+                })
+            })
+        </script>
+    </body>
+</html>
